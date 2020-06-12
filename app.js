@@ -1,7 +1,7 @@
 // Declare variables
 var score, roundScore, activePlayer, gamePlaying;
 
-// init functions set game to initial state
+// init functions set game to initial state on page load and at game end
 init()
 
 // Starty game by rolling the dice
