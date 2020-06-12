@@ -1,10 +1,13 @@
+// Declare variables
 var score, roundScore, activePlayer, gamePlaying;
 
+// init functions set game to initial state
 init()
 
+// Starty game by rolling the dice
 document.querySelector('.btn-roll').addEventListener('click', function() {
 
-     if(gamePlaying){                                             //state variable = true
+     if(gamePlaying){                                             //state variable
 
         document.querySelector('.one').textContent = ""
 
@@ -19,7 +22,7 @@ document.querySelector('.btn-roll').addEventListener('click', function() {
         // 3.Update roundscore if the rolled number is not a 1
         if(dice !== 1){
             // Add score
-             roundScore += dice                                   // first update score
+             roundScore += dice                                   
              document.querySelector('#current-'+ activePlayer).textContent = roundScore
         }else{
             diceDOM.style.display = 'none'
@@ -30,7 +33,7 @@ document.querySelector('.btn-roll').addEventListener('click', function() {
        
 })
 
-
+// Hold button adds round score to global score
 document.querySelector('.btn-hold').addEventListener('click', function() {
     if(gamePlaying) {
             document.querySelector('.dice').style.display = 'none'
@@ -60,7 +63,7 @@ const name = document.getElementById('name-' + activePlayer).textContent
     
 })
 
-
+// nextPayer function toggles between players active/not active
 function nextPlayer() {
     activePlayer === 0 ? activePlayer = 1 : activePlayer = 0
         roundScore = 0
@@ -77,7 +80,7 @@ function nextPlayer() {
 
 document.querySelector('.btn-new').addEventListener('click', init)
 
-
+// initial state on page load and at the end of every game
 function init() {
     scores = [0,0];
     roundScore = 0;
@@ -103,11 +106,13 @@ function init() {
    
 }
 
+// modal shows game rules
 document.querySelector('.btn-rules').addEventListener('click', showRules)
 function showRules(e) {
     document.querySelector('.overlay').style.display = 'flex';
 }
 
+//remove modal
 document.querySelector('.close').addEventListener('click', closeRules)
 function closeRules(e) {
     document.querySelector('.overlay').style.display = 'none';
