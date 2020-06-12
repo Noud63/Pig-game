@@ -1,0 +1,245 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+}
+
+@font-face {
+    font-family: "DS-DIGII.TTF";
+    src: url(fonts/DS-DIGII.TTF),
+         url(fonts/ds-digii-webfont.woff),
+         url(fonts/ds-digii-webfont.woff2)
+}
+
+.clearfix::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+body {
+    background-image: linear-gradient(rgba(62, 20, 20, 0.4), rgba(62, 20, 20, 0.4)), url(fallingdices/background2.jpg);
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    height: 100vh;
+}
+
+.wrapper {
+    width: 1000px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgb(247, 241, 241);
+    box-shadow: 0px 10px 40px rgba(0, 0, 0, 1);
+    overflow: hidden;
+    border-radius: 20px;
+}
+
+.player-0-panel,
+.player-1-panel {
+    width: 50%;
+    float: left;
+    height: 600px;
+    padding: 100px;
+   
+}
+
+/**********************************************
+*** PLAYERS
+**********************************************/
+
+.player-name {
+    font-family: Arial, sans-serif;
+    font-size: 2rem;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    position: relative;
+    color: rgb(153, 138, 138);
+}
+
+.player-score {
+    text-align: center;
+    font-family: "DS-DIGII.TTF";
+    font-size: 110px;
+    font-weight: 100;
+    color:red;
+    margin-bottom: 80px;
+    margin-top: 55px;
+    text-shadow: 0px 0px 2px red;
+}
+
+.active { 
+    background-color: #e2d1d1; 
+}
+.active .player-name { 
+    font-family: Arial, sans-serif;
+    font-size: 2rem;
+    color: red;
+}
+
+.active .player-name::after {
+    content: "\2022";
+    font-size: 47px;
+    position: absolute;
+    color: #EB4D4D;
+    top: -7px;
+    right: 10px;
+    
+}
+
+
+
+.player-current-box {
+    background-color: rgb(49, 5, 5);
+    color: #fff;
+    width: 40%;
+    margin: 0 auto;
+    padding: 12px;
+    text-align: center;
+    box-shadow: 0px 2px 2px rgb(117, 117, 117);
+    border: 2px solid rgb(148, 148, 148);
+}
+
+.player-current-label {
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    font-size: 12px;
+    color: rgb(255, 255, 255);
+    font-family: Lato;
+}
+
+.player-current-score {
+    font-family: "DS-DIGII.TTF";
+    font-size: 30px;
+    color: red;
+    text-shadow: 0px 0px 6px red;
+}
+
+button {
+    position: absolute;
+    width: 200px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #555;
+    background: none;
+    border: none;
+    font-family: Lato;
+    font-size: 20px;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-weight: 300;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+button:hover { font-weight: 600; }
+button:hover i { margin-right: 20px; }
+
+button:focus {
+    outline: none;
+}
+
+i {
+    color: #EB4D4D;
+    display: inline-block;
+    margin-right: 15px;
+    font-size: 32px;
+    line-height: 1;
+    vertical-align: text-top;
+    margin-top: -4px;
+    transition: margin 0.3s;
+}
+
+.btn-new { top: 45px;}
+.btn-roll { top: 405px;}
+.btn-hold { top: 460px;}
+.btn-rules { 
+    top: 550px;
+    font-size: .8rem;
+    font-weight: 700;
+    text-decoration: underline;
+}
+
+.overlay {
+    display: none;
+    position: absolute;
+    top:0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgb(0, 20, 39, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+.gameRules {
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 20px;
+    border: 1px solid white;
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+}
+
+span {
+    margin-top: 10px;
+    width: 75%;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-shadow: 0px 1px 2px rgb(0, 0, 0);
+}
+
+.bottom {
+    margin-bottom: 10px;
+}
+
+.close {
+    position: absolute;
+    z-index: 999;
+    top: 148px;
+    right: 115px;
+    color :#fff;
+    cursor: pointer;
+}
+
+.dice {
+    position: absolute;
+    left: 50%;
+    top: 225px;
+    transform: translateX(-50%);
+    height: 90px;
+}
+
+.one {
+    position: absolute;
+    left: 50%;
+    top: 250px;
+    transform: translateX(-50%); 
+    color: #EB4D4D;
+    font-size: 32px;
+    font-family: Lato;
+}
+
+.winner { 
+    background-color: #e2d1d1; 
+}
+.winner .player-name { 
+   color: #EB4D4D; 
+}
