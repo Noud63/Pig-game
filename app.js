@@ -118,7 +118,11 @@ function closeRules(e) {
     document.querySelector('.overlay').style.display = 'none';
 }
 
-
+//Close modal wherever you click on the modal
+document.querySelector('.overlay').addEventListener('click', closeOverlay)
+function closeOverlay(e) {
+        document.querySelector('.overlay').style.display = 'none';
+    }
 
 
 
