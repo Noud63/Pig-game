@@ -14,29 +14,36 @@
 
     <body>
 
-         <div class="wrapper clearfix">
+           <div class="wrapper clearfix">
+
                <div class="player-0-panel active">
-                   <div class="player-name" id="name-0">Player 1</div>
-                   <div class="player-score" id="score-0">43</div>
+                         <div class="player-name" id="name-0">Player 1</div>
+                         <div class="player-score" id="score-0">43</div>
                    <div class="player-current-box">
-                   <div class="player-current-label">round score</div>
-                   <div class="player-current-score" id="current-0">11</div>
-                </div>
-           </div>
+                         <div class="player-current-label">round score</div>
+                         <div class="player-current-score" id="current-0">11</div>
+                   </div>
+               </div>
             
-           <div class="player-1-panel">
-                 <div class="player-name" id="name-1">Player 2</div>
-                 <div class="player-score" id="score-1">72</div>
-                 <div class="player-current-box">
-                      <div class="player-current-label">round score</div>
-                      <div class="player-current-score" id="current-1">0</div>
-                 </div>
-           </div>
+               <div class="player-1-panel">
+                         <div class="player-name" id="name-1">Player 2</div>
+                         <div class="player-score" id="score-1">72</div>
+                    <div class="player-current-box">
+                         <div class="player-current-label">round score</div>
+                         <div class="player-current-score" id="current-1">0</div>
+                   </div>
+               </div>
             
             <button class="btn-new"><i class="ion-ios-plus-outline"></i>New game</button>
             <button class="btn-roll"><i class="ion-ios-loop"></i>Roll dice</button>
             <button class="btn-hold"><i class="ion-ios-download-outline"></i>Hold</button>
+            <div class="box">
+              <div class="setLimit">set limit</div>
+                    <input type="text" class="limit"></input>
+              </div>
             <button class="btn-rules">Rules of the game</button>
+           
+
 
                     <div class="overlay">
                          <div class="gameRules">
@@ -44,11 +51,13 @@
                               <span>- The game has two players playing in rounds</span>
                               <span>- With each turn a player rolls a dice as many time he wishes</span>
                               <span>- Each result gets added to his (current) round score</span>
-                              <span>- If the player rolls a 1, all round score gets lost</span>
+                              <span>- If a player rolls a 1, all round score gets lost</span>
+                              <span>- If a player rolls a 6 twice in a row he looses his entire score</span>
                               <span>- After that it's the next player's turn</span>
-                              <span>- The player can choose hold, so his round score gets added to his global score</span>
+                              <span>- A player can choose hold, so his round score gets added to his global score</span>
                               <span>- After that it's again the next player's turn</span>
-                              <span>- The first player to reach 50 points wins the game</span>
+                              <span>- The first player to reach the amount of points set in the set limit box wins the game</span>
+                              <span>- By default the limit is set to 50</span>
                               <span class="bottom">- Don't be nervous</span>
                               <div class="close"><img src="close.png" style="width: 30px;"></div>
                          </div>
