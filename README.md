@@ -1,8 +1,6 @@
 # Pig-game
 
-Screen shots.
-
-Game Rules
+Game Rules<br>
 The game has two players playing in rounds<br>
 With each turn a player rolls a dice as many time he wishes<br>
 Each result gets added to his (current) round score<br>
@@ -13,6 +11,8 @@ A player can choose hold, so his round score gets added to his global score<br>
 After that it's again the next player's turn<br>
 The first player to reach the amount of points set in the set limit box wins the game<br>
 By default the limit is set to 50<br>
+
+Screenshots<br>
 
 ![pig Game](https://user-images.githubusercontent.com/38325801/84673940-9f0ae500-af2a-11ea-8279-ac0dc6c7d4a5.png)
 
