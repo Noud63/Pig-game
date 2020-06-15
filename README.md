@@ -2,7 +2,8 @@
 
 Screen shots.
 
-![pig Game](https://user-images.githubusercontent.com/38325801/84511957-98306800-acc7-11ea-8c81-1faf9fcfdb6c.png)
+![pig Game](https://user-images.githubusercontent.com/38325801/84641877-fe9dcc00-aefb-11ea-9c86-2714de7396b7.png)
+
 
 
 ![pig Game2](https://user-images.githubusercontent.com/38325801/84513120-48eb3700-acc9-11ea-8ad9-84e5f12cf982.png)
