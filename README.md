@@ -1,4 +1,6 @@
-# Pig-game (playing dice)
+# Pig-game<br>
+
+A desktop dice game<br>
 
 Game Rules<br>
 The game has two players playing in rounds<br>
