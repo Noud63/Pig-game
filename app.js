@@ -11,7 +11,7 @@ function roll() {
         //When there is no limit set you can't play the game
         setLimit()
 
-    if(gamePlaying === true){                                             //state variable: gamePlaying = true
+    if(gamePlaying){                                             //state variable: gamePlaying = true
 
         document.querySelector('.one').textContent = ""
         
@@ -113,9 +113,6 @@ function nextPlayer() {
 
         document.querySelector('.player-0-panel').classList.toggle('active')  //if active --> not active
         document.querySelector('.player-1-panel').classList.toggle('active')  //if not active --> active
-
-        // Or: document.querySelector('.player-0-panel').classList.remove('active')
-        //     document.querySelector('.player-1-panel').classList.add('active')
 }
 
 
