@@ -25,3 +25,6 @@ Screenshots<br>
 ![pig Game3](https://user-images.githubusercontent.com/38325801/84889187-bff14880-b098-11ea-9583-0f0b2a0e7c15.png)
 
 ![pig Game4](https://user-images.githubusercontent.com/38325801/84889262-e0b99e00-b098-11ea-8f0f-3bf5fbf83d24.png)
+
+![pig Game6](https://user-images.githubusercontent.com/38325801/84889360-0ba3f200-b099-11ea-91eb-f610e265923d.png)
+
