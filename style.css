@@ -19,7 +19,7 @@
 }
 
 body {
-    background-image: linear-gradient(rgba(62, 20, 20, 0.4), rgba(62, 20, 20, 0.4)), url(backgrounds/background1.jpg);
+    background-image:url(backgrounds/background1.jpg);
     background-size: cover;
     background-position: center;
     position: relative;
@@ -45,7 +45,6 @@ body {
     float: left;
     height: 650px;
     padding: 100px;
-  
 }
 
 /**********************************************
@@ -70,8 +69,8 @@ body {
     font-size: 110px;
     font-weight: 100;
     color : #d4b6b6;
-    margin-bottom: 80px;
-    margin-top: 55px;
+    margin-bottom: 55px;
+    margin-top: 45px;
 }
 
 /* active class */
@@ -97,7 +96,7 @@ body {
 .player-current-box {
     background-color: rgb(49, 5, 5);
     color: #fff;
-    width: 40%;
+    width: 60%;
     margin: 0 auto;
     padding: 12px;
     text-align: center;
@@ -144,7 +143,7 @@ button:focus {
 }
 
 i {
-    color: rgb(255, 0, 0);
+    color:red;
     display: inline-block;
     margin-right: 15px;
     font-size: 32px;
@@ -154,11 +153,11 @@ i {
     transition: margin 0.3s;
 }
 
-.btn-new { top: 45px;}
-.btn-roll { top: 405px;}
-.btn-hold { top: 460px;}
+.btn-new { top: 50px;}
+.btn-roll { top: 375px;}
+.btn-hold { top: 430px;}
 .btn-rules { 
-    top: 610px;
+    top: 600px;
     font-size: .7rem;
     font-weight: 700;
     text-decoration: underline;
@@ -175,19 +174,17 @@ i {
 
 .box {
     width: 100px;
-    height: auto;
     box-shadow: 0px 1px 4px rgba(43, 28, 15, 0.5);
     position: absolute;
-    top: 525px;
+    top: 490px;
     width: 100px;
     height: 60px;
     left:50%;
     transform: translateX(-50%);
-    margin-bottom: 20px;
 }
 
 .setLimit {
-    background-color: rgb(255, 0, 0);
+    background-color:red;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -204,14 +201,13 @@ i {
 input[type=text]  {
     position: relative;
     width: 100px;
-    height: 40px;
+    height: 42px;
     margin-bottom: 20px;
     outline: none;
     border: 1px solid red;
     text-align: center;
     font-size: 1.4rem;
     color: red;
-    z-index: 5;
 }
 
 ::placeholder {
@@ -234,6 +230,14 @@ input[type=text]  {
     z-index: 5;
 }
 
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    line-height: 2;
+}
+
 .gameRules {
     width: 85%;
     display: flex;
@@ -242,25 +246,103 @@ input[type=text]  {
     flex-direction: column;
     padding: 20px;
     border: 1px solid white;
-}
-
-.header {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-weight: bold;
-}
-
-span {
-    margin-top: 10px;
-    width: 75%;
-    color: white;
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 1rem;
+    color: white;
+    font-size: 1.2rem;
+    text-shadow: 0px 1px 1px black;
+}
+
+.noLimit {
+    display: none;
+    position: absolute;
+    top:0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgb(0, 20, 39, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 5;
+    color: white;
+}
+
+.gameRules2 {
+    width: 85%;
+    height: 54%;
     display: flex;
     justify-content: center;
     align-items: center;
-    text-shadow: 0px 1px 2px rgb(0, 0, 0);
+    flex-direction: column;
+    padding: 20px;
+    border: 1px solid white;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    font-size: 1.2rem;
+    text-shadow: 0px 1px 1px black;
+}
+
+/* red white boxes */
+.box2 {
+    margin: 40px auto;
+    box-shadow: 0px 1px 4px rgba(43, 28, 15, 0.5);
+    width: 60%;
+    height: auto;
+    background-color: white;
+    border: 1px solid red;
+}
+
+.total {
+    background-color:red;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+    height: 20px;
+    color: white;
+    font-size: .8rem;
+}
+
+.totalWins-0,
+.totalWins-1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: red;
+    font-size: 1.4rem;
+    font-family: Arial, Helvetica, sans-serif;
+    padding-top: 8px;
+    width: 65%;
+    height: 40px;
+    padding-bottom: 6px;
+    border-right: 1px solid red;
+}
+
+.reset {
+    width: 35%;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.reset0 {
+    width: 65%;
+    text-align: center;
+}
+
+.reset1 {
+    width: 35%;
+    text-align: center;
+}
+
+.wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
 }
 
 .bottom {
@@ -270,10 +352,15 @@ span {
 .close {
     position: absolute;
     z-index: 999;
-    top: 160px;
+    top: 162px;
     right: 90px;
     color :#fff;
     cursor: pointer;
+}
+
+.alignleft {
+    text-align: left;
+    width: 79%;
 }
 
 .dice {
@@ -282,6 +369,11 @@ span {
     top: 225px;
     transform: translateX(-50%);
     height: 90px;
+}
+
+::placeholder {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.4rem;
 }
 
 .one {
@@ -296,7 +388,6 @@ span {
 
 .winner .player-name { 
    color: #EB4D4D; 
-
 }
 
 .winner .player-score {
@@ -304,19 +395,19 @@ span {
     text-shadow: 0px 0px 4px rgb(255, 64, 64);
 }
 
-.winner .player-name {
+.blink {
     -webkit-animation: blink 1s infinite;
 	-moz-animation: blink 1s infinite;
 	-ms-animation: blink 1s infinite;
 	-o-animation: blink 1s infinite;   
     animation:blink 1s linear infinite;
-
 }
 
-@keyframes blink{
-    0%{   color: rgb(255, 0, 0);}
-    50%{   color: rgb(255, 0, 0);}
+@keyframes blink {
+    0%{   color:red;}
+    50%{   color:red;}
     62%{   color: transparent; }
     97%{   color:transparent;}
-    100%{  color: rgb(255, 0, 0);}
+    100%{  color:red;}
 }
+

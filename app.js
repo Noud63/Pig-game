@@ -1,79 +1,107 @@
 
-var scores, roundScore, activePlayer, gamePlaying;
+var scores, roundScore, activePlayer, gamePlaying, input;
 let dices = []
+let wins = [0,0];
 
 init()
 
-document.querySelector('.btn-roll').addEventListener('click', function() {
+document.querySelector('.btn-roll').addEventListener('click', roll) 
+function roll() {
 
-     if(gamePlaying){                                             //state variable: gamePlaying = true
+        //When there is no limit set you can't play the game
+        setLimit()
+
+    if(gamePlaying === true){                                             //state variable: gamePlaying = true
 
         document.querySelector('.one').textContent = ""
-       
-        // 1. Random number
-        var dice = Math.floor(Math.random() * 6) + 1;
-            dices.push(dice)
-            console.log(dices)
-        // 2.Display result
-        var diceDOM = document.querySelector('.dice')
-            diceDOM.style.display = 'block';
-            diceDOM.src = 'dice-' + dice + '.png'
-            
-        // 3.Update roundscore if the rolled number is not a 1
-        let prev = dices[dices.length - 2]
-
-        if(dice !== 1 && dice + prev !== 12){
-            // Add score
-            roundScore += dice                                   // first update score
-            document.querySelector('#current-'+ activePlayer).textContent = roundScore
-        }else if(dice === 1){
-            dices = []
-            diceDOM.style.display = 'none'
-            document.querySelector('.one').textContent = "'Ooops you rolled a 1!'"
-            nextPlayer()
-        }else if(dice + prev === 12){
-            dices = []
-            diceDOM.style.display = 'none'
-            document.getElementById('score-' + activePlayer).textContent = '0';
-            document.querySelector('.one').textContent = "'Ooops you rolled 2 x 6!'"
-            nextPlayer()
-            }
-     }
-       
-})
-
-
-document.querySelector('.btn-hold').addEventListener('click', function() {
-        if(gamePlaying) {
-            document.querySelector('.dice').style.display = 'none'
-            // Add current score to global score
-            scores[activePlayer] = scores[activePlayer] + roundScore
-            
-            // Update UI
-            document.getElementById('score-' + activePlayer).textContent = scores[activePlayer] 
         
-            // Check if player won the game, and set limit.
-            let input = document.querySelector('.limit').value
-            
-        if(scores[activePlayer] >= input){
-            
-const name = document.getElementById('name-' + activePlayer).textContent
-             document.getElementById('name-' + activePlayer).textContent = name + " wins!"
+    // 1. Random number
+    var dice = Math.floor(Math.random() * 6) + 1;
+        dices.push(dice)
+    
+    // 2.Display result
+    var diceDOM = document.querySelector('.dice')
+        diceDOM.style.display = 'block';
+        diceDOM.src = 'dice-' + dice + '.png'
+        
+    // 3.Update roundscore if the rolled number is not a 1
+    let prev = dices[dices.length - 2]
 
-             document.querySelector('.dice').style.display = 'none'
-
-             document.querySelector('.player-' + activePlayer + '-panel').classList.add('winner')
-             document.querySelector('.player-' + activePlayer + '-panel').classList.remove('active')
-
-             gamePlaying = false
-        }else{
-             //nextPlayer
-             nextPlayer()
+    if(dice !== 1 && dice + prev !== 12){
+        // Add score
+        roundScore += dice                                   // first update score
+        document.querySelector('#current-'+ activePlayer).textContent = roundScore
+    }else if(dice === 1){
+        dices = []
+        diceDOM.style.display = 'none'
+        document.querySelector('.one').textContent = "'Ooops you rolled a 1!'"
+        nextPlayer()
+    }else if(dice + prev === 12){
+        dices = []
+        diceDOM.style.display = 'none'
+        document.getElementById('score-' + activePlayer).textContent = '0';
+        document.querySelector('.one').textContent = "'Ooops you rolled 2 x 6!'"
+        nextPlayer()
         }
-    
     }
+       
+}
+
+
+document.querySelector('.btn-hold').addEventListener('click', hold)
+function hold() {
+
+        setLimit()
+
+    if(gamePlaying) {
+        document.querySelector('.dice').style.display = 'none'
+
+        // Add current score to global score
+        scores[activePlayer] = scores[activePlayer] + roundScore
+        
+        // Update UI
+        document.getElementById('score-' + activePlayer).textContent = scores[activePlayer] 
     
-})
+        // Check if player won the game, and set limit.
+        let input = document.querySelector('.limit').value
+
+    if(scores[activePlayer] >= input){
+        
+        document.getElementById('sound').muted = false
+        document.getElementById('sound').play()
+        document.getElementById('name-' + activePlayer).classList.add('blink')
+        
+const name = document.getElementById('name-' + activePlayer).textContent
+        document.getElementById('name-' + activePlayer).textContent = name + " wins!"
+
+        document.querySelector('.dice').style.display = 'none'
+
+        document.querySelector('.player-' + activePlayer + '-panel').classList.add('winner')
+        document.querySelector('.player-' + activePlayer + '-panel').classList.remove('active')
+        
+        document.querySelector('.btn-hold').removeEventListener('click', hold)
+        document.querySelector('.btn-roll').removeEventListener('click', roll) 
+
+        setTimeout( () => {
+        document.getElementById('name-' + activePlayer).classList.remove('blink')
+        document.getElementById('name-' + activePlayer).style.color = 'red'
+            }, 8000)
+        
+    if(document.querySelector('.player-' + activePlayer + '-panel').classList.contains('winner')){
+        wins[activePlayer] = wins[activePlayer] + 1
+        document.querySelector('.totalWins-' + activePlayer).textContent = wins[activePlayer]
+    }
+        gamePlaying = false
+        
+        }else{
+
+            //nextPlayer
+            nextPlayer()
+    }
+
+  }
+    
+}
 
 
 function nextPlayer() {
@@ -90,61 +118,105 @@ function nextPlayer() {
         //     document.querySelector('.player-1-panel').classList.add('active')
 }
 
+
+document.querySelector('.btn-0').addEventListener('click', function(e){
+        console.log(e.target)
+        if(document.querySelector('.totalWins-0')){
+            document.querySelector('.totalWins-0').textContent = '0'
+            wins[0] = 0
+        }
+    })
+
+document.querySelector('.btn-1').addEventListener('click', function(e){
+        console.log(e.target)
+        if(document.querySelector('.totalWins-1')){
+            document.querySelector('.totalWins-1').textContent = '0'
+            wins[1] = 0
+        }
+    })    
+
 document.querySelector('.btn-new').addEventListener('click', init)
 
 
 function init() {
-    scores = [0,0];
-    roundScore = 0;
-    activePlayer = 0;
-    gamePlaying = true                       // state variable
+        scores = [0,0];
+        roundScore = 0;
+        activePlayer = 0;
+        gamePlaying = true                       // state variable
 
-    dices = []
+        dices = []
 
-    //Default limit set to 50
-    document.querySelector('.limit').value = "50"
+        //Default limit set to 50
+        input = document.querySelector('.limit').value 
+
+        document.getElementById('sound').load()
+
+        document.getElementById('name-0').classList.remove('blink')    
+        document.getElementById('name-1').classList.remove('blink')    
+
+        document.getElementById('sound').muted = true
+        
+        document.querySelector('.dice').style.display = 'none'
+
+        document.querySelector('.one').textContent = ""
+        
+        document.getElementById('score-0').textContent = '0'
+        document.getElementById('score-1').textContent = '0'
+        document.getElementById('current-0').textContent = '0'
+        document.getElementById('current-1').textContent = '0'
+
+        document.getElementById('name-0').textContent = "Player 1"
+        document.getElementById('name-1').textContent = "Player 2"
     
-    document.querySelector('.dice').style.display = 'none'
-    document.querySelector('.one').textContent = ""
-    
-    document.getElementById('score-0').textContent = '0'
-    document.getElementById('score-1').textContent = '0'
-    document.getElementById('current-0').textContent = '0'
-    document.getElementById('current-1').textContent = '0'
+        document.querySelector('.player-0-panel').classList.remove('winner')
+        document.querySelector('.player-1-panel').classList.remove('winner')
+        document.querySelector('.player-0-panel').classList.remove('active')
+        document.querySelector('.player-1-panel').classList.remove('active')
+        document.querySelector('.player-0-panel').classList.add('active')
 
-    document.getElementById('name-0').textContent = "Player 1"
-    document.getElementById('name-1').textContent = "Player 2"
-   
-    document.querySelector('.player-0-panel').classList.remove('winner')
-    document.querySelector('.player-1-panel').classList.remove('winner')
-    document.querySelector('.player-0-panel').classList.remove('active')
-    document.querySelector('.player-1-panel').classList.remove('active')
-    document.querySelector('.player-0-panel').classList.add('active')
+        document.querySelector('.btn-hold').addEventListener('click', hold)
+        document.querySelector('.btn-roll').addEventListener('click', roll) 
    
 }
 
 
 document.querySelector('.btn-rules').addEventListener('click', showRules)
 function showRules(e) {
-    document.querySelector('.overlay').style.display = 'flex';
-}
+       document.querySelector('.overlay').style.display = 'flex';
+    }
 
-document.querySelector('.close').addEventListener('click', closeRules)
-function closeRules(e) {
-    document.querySelector('.overlay').style.display = 'none';
-}
+document.querySelectorAll('.close').forEach( el => {
+        el.addEventListener('click', function(e) {
+        document.querySelector('.overlay').style.display = 'none';
+        document.querySelector('.noLimit').style.display = 'none'
+    })
+})
 
 document.querySelector('.overlay').addEventListener('click', closeOverlay)
 function closeOverlay(e) {
         document.querySelector('.overlay').style.display = 'none';
     }
+
+document.querySelector('.noLimit').addEventListener('click', closeLimit)
+    function closeLimit(e) {
+        document.querySelector('.noLimit').style.display = 'none'
+    }   
     
+//If no limit set show alert to set limit  
+function setLimit() {
+    if(document.querySelector('.limit').value === "" || document.querySelector('.limit').value < 1){
+        document.querySelector('.dice').style.display = 'none'
+        gamePlaying = false
+        document.querySelector('.noLimit').style.display = 'flex'
+    }else{
+        gamePlaying = true
+        }
+}
 
 
-
-
-
-
+    
+    
+    
 
 
 
