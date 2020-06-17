@@ -28,7 +28,6 @@ Screenshots<br>
 
 ![pig Game5](https://user-images.githubusercontent.com/38325801/84889510-43ab3500-b099-11ea-8440-30fe0954b2b5.png)
 
-
 ![pig Game6](https://user-images.githubusercontent.com/38325801/84889360-0ba3f200-b099-11ea-91eb-f610e265923d.png)
 
 
