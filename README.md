@@ -18,3 +18,5 @@ Before start playing set a limit in the set limit box<br>
 
 Screenshots<br>
 
+![pig Game](https://user-images.githubusercontent.com/38325801/84888865-3c375c00-b098-11ea-9e66-b77e66990aa9.png)
+
