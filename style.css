@@ -379,7 +379,7 @@ input[type=text]  {
 .one {
     position: absolute;
     left: 50%;
-    top: 250px;
+    top: 235px;
     transform: translateX(-50%); 
     color: #EB4D4D;
     font-size: 32px;
