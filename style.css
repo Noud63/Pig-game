@@ -366,7 +366,7 @@ input[type=text]  {
 .dice {
     position: absolute;
     left: 50%;
-    top: 225px;
+    top: 215px;
     transform: translateX(-50%);
     height: 90px;
 }
