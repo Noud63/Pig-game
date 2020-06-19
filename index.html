@@ -2,11 +2,10 @@
 <html lang="en">
     <head>
              <meta charset="UTF-8">
-             <meta name="description" content="Dice game by Noud van Dun">
-             <link href="https://fonts.googleapis.com/css?family=Lato:100,300,600" rel="stylesheet" type="text/css">          
-             <link href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css"> 
-             <meta name="keywords" content="dice game, pig-game, dices, gambling">
-             <meta name="author" content="noud van dun">
+             <link href="https://fonts.googleapis.com/css?family=Lato:100,300,600" rel="stylesheet"
+               type="text/css">          
+             <link href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"  
+               rel="stylesheet" type="text/css">                                                                                  
              <link type="text/css" rel="stylesheet" href="style.css">
              <link rel="icon" href="data:,">
         
@@ -91,16 +90,23 @@
 
             <div class="noLimit">
               <div class="gameRules2">
-              <span>Set a limit before you start playing!</span>
+              <div class="msg">Specify limit in set limit dialogue box before start playing!</div>
               <div class="close"><img src="close.png" style="width: 30px;"></div>
               </div>
             </div>
 
+            <div class="invalid">
+              <div class="gameRules2">
+              <div class="msg2">
+                <span>Invalid value specified in set limit dialogue box!</span>
+                <span>Specify a whole number</span>
+              </div>
+              <div class="close"><img src="close.png" style="width: 30px;"></div>
+              </div>
+            </div>
         </div>
 
-    
-
-        <script src="app.js"></script>
+    <script src="app.js"></script>
 
     </body>
 

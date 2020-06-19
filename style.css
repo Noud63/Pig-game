@@ -224,7 +224,7 @@ input[type=text]  {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgb(0, 20, 39, 0.5);
+    background-color: rgba(63, 63, 63, 0.5);
     justify-content: center;
     align-items: center;
     z-index: 5;
@@ -246,10 +246,12 @@ input[type=text]  {
     flex-direction: column;
     padding: 20px;
     border: 1px solid white;
+    border-radius: 20px;
     font-family: Arial, Helvetica, sans-serif;
     color: white;
     font-size: 1.2rem;
     text-shadow: 0px 1px 1px black;
+    line-height: 1.4;
 }
 
 .noLimit {
@@ -259,7 +261,7 @@ input[type=text]  {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgb(0, 20, 39, 0.5);
+    background-color: rgba(88, 35, 35, 0.5);
     justify-content: center;
     align-items: center;
     z-index: 5;
@@ -268,17 +270,39 @@ input[type=text]  {
 
 .gameRules2 {
     width: 85%;
-    height: 54%;
+    height: 61%;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     padding: 20px;
     border: 1px solid white;
+    border-radius: 20px;
     font-family: Arial, Helvetica, sans-serif;
     color: white;
     font-size: 1.2rem;
     text-shadow: 0px 1px 1px black;
+}
+
+.invalid {
+    display: none;
+    position: absolute;
+    top:0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(88, 35, 35, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 5;
+    color: white;
+}
+
+.msg2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 /* red white boxes */
@@ -352,7 +376,7 @@ input[type=text]  {
 .close {
     position: absolute;
     z-index: 999;
-    top: 162px;
+    top: 138px;
     right: 90px;
     color :#fff;
     cursor: pointer;

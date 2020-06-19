@@ -5,13 +5,14 @@ let wins = [0,0];
 
 init()
 
+// Start game by clicking roll dice
 document.querySelector('.btn-roll').addEventListener('click', roll) 
 function roll() {
 
-        //When there is no limit set you can't play the game
+        //When there is no limit set, you can't play the game
         setLimit()
 
-    if(gamePlaying){                                             //state variable: gamePlaying = true
+    if(gamePlaying === true){                                             //state variable
 
         document.querySelector('.one').textContent = ""
         
@@ -44,14 +45,13 @@ function roll() {
         nextPlayer()
         }
     }
-       
 }
 
-
+// Hold button to add round score to global score and/or win the game
 document.querySelector('.btn-hold').addEventListener('click', hold)
 function hold() {
 
-        setLimit()
+           setLimit()
 
     if(gamePlaying) {
         document.querySelector('.dice').style.display = 'none'
@@ -67,9 +67,7 @@ function hold() {
 
     if(scores[activePlayer] >= input){
         
-        document.getElementById('sound').muted = false
-        document.getElementById('sound').play()
-        document.getElementById('name-' + activePlayer).classList.add('blink')
+           addEffects()
         
 const name = document.getElementById('name-' + activePlayer).textContent
         document.getElementById('name-' + activePlayer).textContent = name + " wins!"
@@ -82,10 +80,7 @@ const name = document.getElementById('name-' + activePlayer).textContent
         document.querySelector('.btn-hold').removeEventListener('click', hold)
         document.querySelector('.btn-roll').removeEventListener('click', roll) 
 
-        setTimeout( () => {
-        document.getElementById('name-' + activePlayer).classList.remove('blink')
-        document.getElementById('name-' + activePlayer).style.color = 'red'
-            }, 8000)
+           removeEffect()
         
     if(document.querySelector('.player-' + activePlayer + '-panel').classList.contains('winner')){
         wins[activePlayer] = wins[activePlayer] + 1
@@ -95,15 +90,44 @@ const name = document.getElementById('name-' + activePlayer).textContent
         
         }else{
 
-            //nextPlayer
             nextPlayer()
-    }
+        }
 
-  }
+    }
     
 }
 
+//If no limit set or invalid limit, show alert (modal) to set limit  
+function setLimit() {
+    if(document.querySelector('.limit').value === "" ||  document.querySelector('.limit').value == 0){
+        document.querySelector('.dice').style.display = 'none'
+        gamePlaying = false
+        document.querySelector('.noLimit').style.display = 'flex'
+    }else if(isNaN(document.querySelector('.limit').value) ||  document.querySelector('.limit').value < 0){
+        document.querySelector('.invalid').style.display = 'flex'
+        //document.querySelector('.limit').value = '0'
+        gamePlaying = false
+    }else{
+        gamePlaying = true
+        }
+}
 
+//Add audio and visual effects to player name when win
+function addEffects() {
+        document.getElementById('sound').muted = false
+        document.getElementById('sound').play()
+        document.getElementById('name-' + activePlayer).classList.add('blink')
+}
+
+// Remove blinking from player name after 8 seconds
+function removeEffect() {
+    setTimeout( () => {
+        document.getElementById('name-' + activePlayer).classList.remove('blink')
+        document.getElementById('name-' + activePlayer).style.color = 'red'
+            }, 8000)
+}
+
+// The next player's turn after clicking hold or rolling a 1 or two 6 in a row
 function nextPlayer() {
     activePlayer === 0 ? activePlayer = 1 : activePlayer = 0
         roundScore = 0
@@ -113,9 +137,12 @@ function nextPlayer() {
 
         document.querySelector('.player-0-panel').classList.toggle('active')  //if active --> not active
         document.querySelector('.player-1-panel').classList.toggle('active')  //if not active --> active
+
+        //document.querySelector('.player-0-panel').classList.remove('active')
+        //document.querySelector('.player-1-panel').classList.add('active')
 }
 
-
+// Reset total wins player 1
 document.querySelector('.btn-0').addEventListener('click', function(e){
         console.log(e.target)
         if(document.querySelector('.totalWins-0')){
@@ -124,6 +151,7 @@ document.querySelector('.btn-0').addEventListener('click', function(e){
         }
     })
 
+// Reset total wins player 2
 document.querySelector('.btn-1').addEventListener('click', function(e){
         console.log(e.target)
         if(document.querySelector('.totalWins-1')){
@@ -132,9 +160,8 @@ document.querySelector('.btn-1').addEventListener('click', function(e){
         }
     })    
 
+// Initial state of the game on page load or when clicking new game button
 document.querySelector('.btn-new').addEventListener('click', init)
-
-
 function init() {
         scores = [0,0];
         roundScore = 0;
@@ -143,7 +170,6 @@ function init() {
 
         dices = []
 
-        //Default limit set to 50
         input = document.querySelector('.limit').value 
 
         document.getElementById('sound').load()
@@ -176,12 +202,13 @@ function init() {
    
 }
 
-
+//Open modal that shows game rules
 document.querySelector('.btn-rules').addEventListener('click', showRules)
 function showRules(e) {
        document.querySelector('.overlay').style.display = 'flex';
     }
 
+//Close button for 'game rules' modal and 'no limit set' modal 
 document.querySelectorAll('.close').forEach( el => {
         el.addEventListener('click', function(e) {
         document.querySelector('.overlay').style.display = 'none';
@@ -189,27 +216,23 @@ document.querySelectorAll('.close').forEach( el => {
     })
 })
 
+//Close modal (game rules)
 document.querySelector('.overlay').addEventListener('click', closeOverlay)
 function closeOverlay(e) {
         document.querySelector('.overlay').style.display = 'none';
     }
 
+//Close modal (no limit)
 document.querySelector('.noLimit').addEventListener('click', closeLimit)
     function closeLimit(e) {
-        document.querySelector('.noLimit').style.display = 'none'
+        document.querySelector('.noLimit').style.display = 'none';
     }   
     
-//If no limit set show alert to set limit  
-function setLimit() {
-    if(document.querySelector('.limit').value === "" || document.querySelector('.limit').value < 1){
-        document.querySelector('.dice').style.display = 'none'
-        gamePlaying = false
-        document.querySelector('.noLimit').style.display = 'flex'
-    }else{
-        gamePlaying = true
-        }
-}
-
+//Close modal (invalid)
+document.querySelector('.invalid').addEventListener('click', closeInvalid)
+    function closeInvalid(e) {
+        document.querySelector('.invalid').style.display = 'none';
+    }   
 
     
     
