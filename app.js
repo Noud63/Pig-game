@@ -69,7 +69,7 @@ function hold() {
         
            addEffects()
         
-const name = document.getElementById('name-' + activePlayer).textContent
+        const name = document.getElementById('name-' + activePlayer).textContent
         document.getElementById('name-' + activePlayer).textContent = name + " wins!"
 
         document.querySelector('.dice').style.display = 'none'
@@ -122,8 +122,7 @@ function addEffects() {
 // Remove blinking from player name after 8 seconds
 function removeEffect() {
     setTimeout( () => {
-        document.getElementById('name-' + activePlayer).classList.remove('blink')
-        document.getElementById('name-' + activePlayer).style.color = 'red'
+        document.getElementById('name-' + activePlayer).classList.remove('blink');
             }, 8000)
 }
 

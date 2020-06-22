@@ -12,6 +12,11 @@
          url(fonts/ds-digii-webfont.woff2)
 }
 
+@font-face {
+    font-family: "ledboard.tff";
+    src: url(fonts/ledboard.ttf);
+}
+
 .clearfix::after {
     content: "";
     display: table;
@@ -52,11 +57,10 @@ body {
 **********************************************/
 
 .player-name {
-    font-family: Arial, sans-serif;
-    font-size: 2rem;
+    font-family: "ledboard.tff";
+    font-size: 1.5rem;
     text-align: center;
     text-transform: uppercase;
-    letter-spacing: 2px;
     margin-top: 20px;
     margin-bottom: 10px;
     position: relative;
@@ -79,18 +83,18 @@ body {
     text-shadow: 0px 0px 4px rgb(255, 64, 64);
 }
 .active .player-name { 
-    font-family: Arial, sans-serif;
-    font-size: 2rem;
+    font-family: "ledboard.tff";
+    font-size: 1.5rem;
     color: red;
 }
 
 .active .player-name::after {
     content: "\2605";
-    font-size: 30px;
+    font-size: 27px;
     position: absolute;
     color: #EB4D4D;
     top: -4px;
-    right: 35px;
+    right: 30px;
 }
 
 .player-current-box {
@@ -411,7 +415,7 @@ input[type=text]  {
 }
 
 .winner .player-name { 
-   color: #EB4D4D; 
+   color: red; 
 }
 
 .winner .player-score {
@@ -434,4 +438,3 @@ input[type=text]  {
     97%{   color:transparent;}
     100%{  color:red;}
 }
-
