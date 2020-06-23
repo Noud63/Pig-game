@@ -39,6 +39,7 @@ function roll() {
         nextPlayer()
     }else if(dice + prev === 12){
         dices = []
+        scores[activePlayer] = 0
         diceDOM.style.display = 'none'
         document.getElementById('score-' + activePlayer).textContent = '0';
         document.querySelector('.one').textContent = "'Ooops you rolled 2 x 6!'"
