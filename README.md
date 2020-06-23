@@ -31,4 +31,6 @@ You lose your round score when rolling a 1
 
 ![pig Game6](https://user-images.githubusercontent.com/38325801/85389501-cb84b980-b547-11ea-83c1-b194a73f0724.png)
 
+Winning the game
 
+![pig Game5](https://user-images.githubusercontent.com/38325801/85389773-29190600-b548-11ea-8e11-69fb8ac4b609.png)
