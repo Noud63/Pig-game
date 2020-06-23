@@ -27,7 +27,7 @@ Game playing
 
 ![pig Game4](https://user-images.githubusercontent.com/38325801/85388991-1eaa3c80-b547-11ea-99bc-c2da02112c4f.png)
 
-You lose youre round score when rolling a 1
+You lose your round score when rolling a 1
 
 ![pig Game6](https://user-images.githubusercontent.com/38325801/85389501-cb84b980-b547-11ea-83c1-b194a73f0724.png)
 
