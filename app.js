@@ -106,7 +106,6 @@ function setLimit() {
         document.querySelector('.noLimit').style.display = 'flex'
     }else if(isNaN(document.querySelector('.limit').value) ||  document.querySelector('.limit').value < 0){
         document.querySelector('.invalid').style.display = 'flex'
-        //document.querySelector('.limit').value = '0'
         gamePlaying = false
     }else{
         gamePlaying = true
