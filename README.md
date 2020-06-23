@@ -23,7 +23,9 @@ Initial state
 
 ![pig Game2](https://user-images.githubusercontent.com/38325801/85388642-9deb4080-b546-11ea-852f-a89fc61d2f5d.png)
 
+Game playing
 
+![pig Game4](https://user-images.githubusercontent.com/38325801/85388991-1eaa3c80-b547-11ea-99bc-c2da02112c4f.png)
 
 
 
