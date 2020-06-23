@@ -14,7 +14,7 @@ After that it's again the next player's turn<br>
 If the global score is equal or exceeds the set limit value, press 'hold' to win the game. Pressing 'roll dice' the game continues<br>
 Before start playing set a limit in the set limit box<br>
 
-<hr style="background-color: red;>
+<hr style="height: 2px;>
 
 Rules of the game
 
