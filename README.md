@@ -14,6 +14,11 @@ After that it's again the next player's turn<br>
 If the global score is equal or exceeds the set limit value, press 'hold' to win the game. Pressing 'roll dice' the game continues<br>
 Before start playing set a limit in the set limit box<br>
 
+
+Rules of the game
+
+![pig Game](https://user-images.githubusercontent.com/38325801/85388849-e4d93600-b546-11ea-89b6-9a064f0042bf.png)
+
 Initial state
 
 ![pig Game2](https://user-images.githubusercontent.com/38325801/85388642-9deb4080-b546-11ea-852f-a89fc61d2f5d.png)
