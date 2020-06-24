@@ -123,7 +123,9 @@ function addEffects() {
 function removeEffect() {
     setTimeout( () => {
         document.getElementById('name-' + activePlayer).classList.remove('blink');
-            }, 8000)
+        document.getElementById('sound').muted = true
+            }, 4800)
+
 }
 
 // The next player's turn after clicking hold or rolling a 1 or two 6 in a row
