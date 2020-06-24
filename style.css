@@ -86,6 +86,7 @@ body {
     font-family: "ledboard.tff";
     font-size: 1.5rem;
     color: red;
+    text-shadow: 0px 0px 4px rgb(255, 64, 64);
 }
 
 .active .player-name::after {
@@ -158,8 +159,8 @@ i {
 }
 
 .btn-new { top: 50px;  color: rgb(184, 0, 0);}
-.btn-roll { top: 375px;  color: rgb(184, 0, 0);}
-.btn-hold { top: 430px;  color: rgb(184, 0, 0);}
+.btn-roll { top: 367px;  color: rgb(184, 0, 0);}
+.btn-hold { top: 422px;  color: rgb(184, 0, 0);}
 .btn-rules { 
     top: 600px;
     font-size: .7rem;
@@ -417,6 +418,7 @@ input[type=text]  {
 
 .winner .player-name { 
    color: red; 
+   text-shadow: 0px 0px 4px rgb(255, 64, 64);
 }
 
 .winner .player-score {
@@ -434,8 +436,11 @@ input[type=text]  {
 
 @keyframes blink {
     0%{   color:red;}
-    50%{   color:red;}
-    62%{   color: transparent; }
-    97%{   color:transparent;}
+    49%{   color:red;}
+    60%{   color: transparent;}
+    99%{   color:transparent;}
     100%{  color:red;}
+
+    from {text-shadow: 0px 0px 4px rgb(255, 64, 64);}
+    to {text-shadow : none;}
 }
