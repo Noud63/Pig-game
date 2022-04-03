@@ -42,6 +42,7 @@ body {
     overflow: hidden;
     border-radius: 20px;
     background-image: url(backgrounds/background5.jpg); 
+    border: 1px solid black;
 }
 
 .player-0-panel,
@@ -50,6 +51,7 @@ body {
     float: left;
     height: 650px;
     padding: 100px;
+    position: relative;
 }
 
 /**********************************************
@@ -75,8 +77,19 @@ body {
     color : #d4b6b6;
     margin-bottom: 55px;
     margin-top: 45px;
+    z-index: 1;
 }
 
+.totalscore {
+    position: absolute;
+    z-index: -1;
+    color: rgb(161, 138, 138);
+    font-size: 1.4rem;
+    font-family: Arial, Helvetica, sans-serif;
+    top: 240px;
+    left: 170px;
+    opacity: .3;
+}
 
 /* ACTIVE CLASS */
 .active .player-score { 
@@ -163,9 +176,15 @@ i {
     transition: margin 0.3s;
 }
 
-.btn-new { top: 50px;  color: rgb(184, 0, 0);}
-.btn-roll { top: 367px;  color: rgb(184, 0, 0);}
-.btn-hold { top: 422px;  color: rgb(184, 0, 0);}
+.btn-new { 
+    top: 50px;  color: rgb(184, 0, 0);
+}
+.btn-roll { 
+    top: 367px;  color: rgb(184, 0, 0);
+}
+.btn-hold { 
+    top: 422px;  color: rgb(184, 0, 0);
+}
 .btn-rules { 
     top: 600px;
     font-size: .7rem;

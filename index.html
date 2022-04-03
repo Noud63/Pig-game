@@ -1,119 +1,120 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-             <meta charset="UTF-8">
-             <link href="https://fonts.googleapis.com/css?family=Lato:100,300,600" rel="stylesheet"
-               type="text/css">          
-             <link href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"  
-               rel="stylesheet" type="text/css">                                                                                  
-             <link type="text/css" rel="stylesheet" href="style.css">
-             <link rel="icon" href="data:,">
-        
-             <title>Pig Game</title>
 
-    </head>
+<head>
+  <meta charset="UTF-8">
+  <link href="https://fonts.googleapis.com/css?family=Lato:100,300,600" rel="stylesheet" type="text/css">
+  <link href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css">
+  <link type="text/css" rel="stylesheet" href="style.css">
+  <link rel="icon" href="data:,">
 
-    <body>
+  <title>Pig Game</title>
 
-           <div class="wrapper clearfix">
+</head>
 
-            <!-- 0-panel player 1 left side, active by default-->
-               <div class="player-0-panel active">
-                         <div class="player-name" id="name-0">Player 1</div>
-                         <div class="player-score" id="score-0">43</div>
-                   <div class="player-current-box">
-                         <div class="player-current-label">round score</div>
-                         <div class="player-current-score" id="current-0">11</div>
-                   </div>
-                   <div class="box2">
-                    <div class="total"><span class="reset0">total wins</span><span class="reset1">reset</span></div>
-                        <div class="wrap">
-                          <div class="totalWins-0">0</div>
-                          <div class="reset btn-0"><img src="reset.png" width="20px"></div>
-                        </div>
-                    </div>
-               </div>
-            
-              <!-- 1-panel player 2 right side -->
-               <div class="player-1-panel">
-                         <div class="player-name" id="name-1">Player 2</div>
-                         <div class="player-score" id="score-1">72</div>
-                    <div class="player-current-box">
-                         <div class="player-current-label">round score</div>
-                         <div class="player-current-score" id="current-1">0</div>
-                   </div>
-                   <div class="box2">
-                    <div class="total"><span class="reset0">total wins</span><span class="reset1">reset</span></div>
-                        <div class="wrap">
-                          <div class="totalWins-1">0</div>
-                          <div class="reset btn-1"><img src="reset.png" width="20px"></div>
-                        </div>
-                    </div>
-               </div>
-            
-            <button class="btn-new"><i class="ion-ios-plus-outline"></i>New game</button>
-            <button class="btn-roll"><i class="ion-ios-loop"></i>Roll dice</button>
-            <button class="btn-hold"><i class="ion-ios-download-outline"></i>Hold</button>
+<body>
 
-            <div class="box">
-              <div class="setLimit">set limit</div>
-                    <input type="text" class="limit" placeholder="0"></input>
-              </div>
+  <div class="wrapper clearfix">
 
-            <button class="btn-rules">Rules of the game</button>
-           
-
-                  <div class="overlay">
-                         <div class="gameRules">
-                              <span class="header">Game rules</span>
-                              <span>- The game has two players playing in rounds</span>
-                              <span>- With each turn a player rolls the dice as many time he wishes</span>
-                              <span>- Each result gets added to his round score</span>
-                              <span>- If a player rolls a 1 two times in a row, all round score gets lost</span>
-                              <span>- If a player rolls a 6 two times in a row he looses his entire score</span>
-                              <span>- After that it's the next player's turn</span>
-                              <span>- A player can choose hold, so his round score gets added to his global score</span>
-                              <span>- After that it's again the next player's turn</span>
-                              <span>- If a player's score is equal or exceeds the amount of points in the set limit box</span>
-                              <span class="alignleft">press hold to win the game. Pressing roll dice the game continues</span>
-                              <span>- Before start playing set a limit in the set limit box</span>
-                              <span class="bottom">- Have fun</span>
-                              <div class="close"><img src="close.png" style="width: 30px;"></div>
-                         </div>
-                   </div>
-
-            <audio id="sound" class="sound"> 
-              <source id="siren" src="sound/siren.mp3" type="audio/mp3">
-            </audio>
-
-           
-              <img src="dice-5.png" alt="Dice" class="dice">
-              <img src="dice-5.png" alt="Dice" class="dice2">
-           
-            
-
-            <div class="one"></div>
-
-            <div class="noLimit">
-              <div class="gameRules2">
-              <div class="msg">Specify limit in set limit dialogue box before start playing!</div>
-              <div class="close"><img src="close.png" style="width: 30px;"></div>
-              </div>
-            </div>
-
-            <div class="invalid">
-              <div class="gameRules2">
-              <div class="msg2">
-                <span>Invalid value specified in set limit dialogue box!</span>
-                <span>Specify a natural number</span>
-              </div>
-              <div class="close"><img src="close.png" style="width: 30px;"></div>
-              </div>
-            </div>
+    <!-- 0-panel player 1 left side, active by default-->
+    <div class="player-0-panel active">
+      <div class="player-name" id="name-0">Player 1</div>
+      <div class="player-score" id="score-0">43</div>
+      <div class="totalscore">TOTAL SCORE</div>
+      <div class="player-current-box">
+        <div class="player-current-label">round score</div>
+        <div class="player-current-score" id="current-0">11</div>
+      </div>
+      <div class="box2">
+        <div class="total"><span class="reset0">total wins</span><span class="reset1">reset</span></div>
+        <div class="wrap">
+          <div class="totalWins-0">0</div>
+          <div class="reset btn-0"><img src="reset.png" width="20px"></div>
         </div>
+      </div>
+    </div>
 
-    <script src="app.js"></script>
+    <!-- 1-panel player 2 right side -->
+    <div class="player-1-panel">
+      <div class="player-name" id="name-1">Player 2</div>
+      <div class="player-score" id="score-1">72</div>
+      <div class="totalscore">TOTAL SCORE</div>
+      <div class="player-current-box">
+        <div class="player-current-label">round score</div>
+        <div class="player-current-score" id="current-1">0</div>
+      </div>
+      <div class="box2">
+        <div class="total"><span class="reset0">total wins</span><span class="reset1">reset</span></div>
+        <div class="wrap">
+          <div class="totalWins-1">0</div>
+          <div class="reset btn-1"><img src="reset.png" width="20px"></div>
+        </div>
+      </div>
+    </div>
 
-    </body>
+    <button class="btn-new"><i class="ion-ios-plus-outline"></i>New game</button>
+    <button class="btn-roll"><i class="ion-ios-loop"></i>Roll dice</button>
+    <button class="btn-hold"><i class="ion-ios-download-outline"></i>Hold</button>
+
+    <div class="box">
+      <div class="setLimit">set limit</div>
+      <input type="text" class="limit" placeholder="0"></input>
+    </div>
+
+    <button class="btn-rules">Rules of the game</button>
+
+
+    <div class="overlay">
+      <div class="gameRules">
+        <span class="header">Game rules</span>
+        <span>- The game has two players playing in rounds</span>
+        <span>- With each turn a player rolls the dice as many time he wishes</span>
+        <span>- Each result gets added to his round score</span>
+        <span>- If a player rolls a 1 two times in a row, all round score gets lost</span>
+        <span>- If a player rolls a 6 two times in a row he looses his entire score</span>
+        <span>- After that it's the next player's turn</span>
+        <span>- A player can choose hold, so his round score gets added to his global score</span>
+        <span>- After that it's again the next player's turn</span>
+        <span>- If a player's score is equal or exceeds the amount of points in the set limit box</span>
+        <span class="alignleft">press hold to win the game. Pressing roll dice the game continues</span>
+        <span>- Before start playing set a limit in the set limit box</span>
+        <span class="bottom">- Have fun</span>
+        <div class="close"><img src="close.png" style="width: 30px;"></div>
+      </div>
+    </div>
+
+    <audio id="sound" class="sound">
+      <source id="siren" src="sound/siren.mp3" type="audio/mp3">
+    </audio>
+
+
+    <img src="dice-5.png" alt="Dice" class="dice">
+    <img src="dice-5.png" alt="Dice" class="dice2">
+
+
+
+    <div class="one"></div>
+
+    <div class="noLimit">
+      <div class="gameRules2">
+        <div class="msg">Specify limit in set limit dialogue box before start playing!</div>
+        <div class="close"><img src="close.png" style="width: 30px;"></div>
+      </div>
+    </div>
+
+    <div class="invalid">
+      <div class="gameRules2">
+        <div class="msg2">
+          <span>Invalid value specified in set limit dialogue box!</span>
+          <span>Specify a natural number</span>
+        </div>
+        <div class="close"><img src="close.png" style="width: 30px;"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+
+</body>
 
 </html>

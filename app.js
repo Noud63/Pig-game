@@ -13,7 +13,7 @@ document.querySelector(".btn-roll").addEventListener("click", roll);
 function roll() {
   //When there is no limit set, you can't play the game
   setLimit();
-  
+
   console.log(count)
   //state variable
   if (gamePlaying === true) {
@@ -27,7 +27,6 @@ function roll() {
     dices.d2.push(dice2);
 
     // 2.Display result
-
     var diceDOM = document.querySelector(".dice");
     diceDOM.style.display = "flex";
     diceDOM.src = "dice-" + dice + ".png";
@@ -68,6 +67,7 @@ function roll() {
   }
 }
 
+
 // Hold button to add round score to global score and/or win the game
 document.querySelector(".btn-hold").addEventListener("click", hold);
 function hold() {
@@ -97,12 +97,8 @@ function hold() {
       document.querySelector(".dice").style.display = "none";
       document.querySelector("#current-" + activePlayer).textContent = "0";
 
-      document
-        .querySelector(".player-" + activePlayer + "-panel")
-        .classList.add("winner");
-      document
-        .querySelector(".player-" + activePlayer + "-panel")
-        .classList.remove("active");
+      document.querySelector(".player-" + activePlayer + "-panel").classList.add("winner");
+      document.querySelector(".player-" + activePlayer + "-panel").classList.remove("active");
 
       document.querySelector(".btn-hold").removeEventListener("click", hold);
       document.querySelector(".btn-roll").removeEventListener("click", roll);
@@ -113,8 +109,7 @@ function hold() {
         document.querySelector(".player-" + activePlayer + "-panel").classList.contains("winner")
       ) {
         wins[activePlayer] = wins[activePlayer] + 1;
-        document.querySelector(".totalWins-" + activePlayer).textContent =
-          wins[activePlayer];
+        document.querySelector(".totalWins-" + activePlayer).textContent = wins[activePlayer];
       }
       gamePlaying = false;
     } else {
@@ -123,18 +118,17 @@ function hold() {
   }
 }
 
+
 //If no limit set or invalid limit, show alert (modal) to set limit
 function setLimit() {
   if (
-    document.querySelector(".limit").value === "" ||
-    document.querySelector(".limit").value == 0
+    document.querySelector(".limit").value === "" || document.querySelector(".limit").value == 0
   ) {
     document.querySelector(".dice").style.display = "none";
     gamePlaying = false;
     document.querySelector(".noLimit").style.display = "flex";
   } else if (
-    isNaN(document.querySelector(".limit").value) ||
-    document.querySelector(".limit").value < 0
+    isNaN(document.querySelector(".limit").value) || document.querySelector(".limit").value < 0
   ) {
     document.querySelector(".invalid").style.display = "flex";
     gamePlaying = false;
@@ -142,6 +136,7 @@ function setLimit() {
     gamePlaying = true;
   }
 }
+
 
 //Add audio and visual effects to player name when win
 function addEffects() {
