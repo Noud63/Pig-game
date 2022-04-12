@@ -453,8 +453,9 @@ input[type=text]  {
     top: 235px;
     transform: translateX(-50%); 
     color: #EB4D4D;
-    font-size: 1.6rem;
+    font-size: 1.4rem;
     font-family: Lato;
+    font-weight: bold;
 }
 
 .winner .player-name { 

@@ -61,7 +61,7 @@ function roll() {
       diceDOM.style.display = "none";
       diceDOM2.style.display = "none";
       document.getElementById("score-" + activePlayer).textContent = "0";
-      document.querySelector(".one").textContent = "Ooops you rolled 2 x 6 in a row!";
+      document.querySelector(".one").textContent = "Ooops you rolled 2 x 6 in a row !";
       nextPlayer();
     }
   }
