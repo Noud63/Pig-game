@@ -1,17 +1,19 @@
 // Refactored roll function
 
-let scores, roundScore, activePlayer, gamePlaying, input, count, deg;
+let scores, roundScore, activePlayer, gamePlaying, input;
 let dices, dice, prev;
-count = 0
 let wins = [0, 0];
 let storeDice = []
 
 init();
 
 document.querySelector(".btn-roll").addEventListener("click", roll);
+
 function roll() {
+
   //When there is no limit set, you can't play the game
   setLimit();
+
   //state variable
   if (gamePlaying === true) {
 
@@ -22,7 +24,16 @@ function roll() {
     storeDice.push(nummers)
 
     // Last dice roll
-    dice = storeDice[storeDice.length - 1]
+    if (storeDice.length > 0) {
+      dice = storeDice[storeDice.length - 1]
+    }
+
+    //Previous dice roll
+    if (storeDice.length > 1) {
+      prev = storeDice[storeDice.length - 2]
+    } else {
+      prev = [0, 0]
+    }
 
     dices = [...document.querySelectorAll('.dices')]
     dices.forEach(dc => {
@@ -34,21 +45,16 @@ function roll() {
       }
     })
 
-    //Previuous dice roll
-    if (storeDice.length > 1) {
-      prev = storeDice[storeDice.length - 2]
-    }
+    // if (dice[0] + prev[0] !== 2 || dice[1] + prev[1] !== 2 || dice[1] + prev[0] !== 2 || dice[0] + prev[1] !== 2 &&
+    //   dice[0] + prev[0] !== 12 || dice[1] + prev[1] !== 12 || dice[1] + prev[0] !== 12 || dice[0] + prev[1] !== 12) {
+    //   // Add score
+    roundScore += dice[0] + dice[1]; // first update score
+    document.querySelector("#current-" + activePlayer).textContent = roundScore;
 
-    if (dice[0] + prev[0] !== 2 || dice[1] + prev[1] !== 2 || dice[1] + prev[0] !== 2 || dice[0] + prev[1] !== 2 &&
-      dice[0] + prev[0] !== 12 || dice[1] + prev[1] !== 12 || dice[1] + prev[0] !== 12 || dice[0] + prev[1] !== 12) {
-      // Add score
-      roundScore += dice[0] + dice[1]; // first update score
-      document.querySelector("#current-" + activePlayer).textContent = roundScore;
-
-    }
+    // }
     if (dice[0] + prev[0] === 2 || dice[1] + prev[1] === 2 || dice[1] + prev[0] === 2 || dice[0] + prev[1] === 2) {
-      document.querySelector(".one").textContent = "Ooops you rolled 2 x 1 in a row !";
       updateUI()
+      document.querySelector(".one").textContent = "Ooops you rolled 2 x 1 in a row !";
       nextPlayer();
     }
 
@@ -145,6 +151,7 @@ function addEffects() {
   document.getElementById("sound").muted = false;
   document.getElementById("sound").play();
   document.getElementById("name-" + activePlayer).classList.add("blink");
+  document.querySelector(".happy").style.visibility = "visible";
 }
 
 // Remove blinking from player name after 8 seconds
@@ -152,6 +159,7 @@ function removeEffect() {
   setTimeout(() => {
     document.getElementById("name-" + activePlayer).classList.remove("blink");
     document.getElementById("sound").muted = true;
+    document.querySelector(".happy").style.visibility = "hidden";
   }, 4800);
 }
 
@@ -188,11 +196,7 @@ function init() {
   roundScore = 0;
   activePlayer = 0;
   gamePlaying = true; // state variable
-
-  dices = {
-    d1: [],
-    d2: [],
-  }
+  storeDice = []
 
   input = document.querySelector(".limit").value;
 
@@ -221,6 +225,8 @@ function init() {
   document.querySelector(".player-0-panel").classList.remove("active");
   document.querySelector(".player-1-panel").classList.remove("active");
   document.querySelector(".player-0-panel").classList.add("active");
+
+  document.querySelector(".happy").style.visibility = "hidden";
 
   document.querySelector(".btn-hold").addEventListener("click", hold);
   document.querySelector(".btn-roll").addEventListener("click", roll);
