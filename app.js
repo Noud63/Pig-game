@@ -4,19 +4,9 @@ let scores, roundScore, activePlayer, gamePlaying, input, count, deg;
 let dices, dice, prev;
 count = 0
 let wins = [0, 0];
-let duoStore = []
+let storeDice = []
 
 init();
-
-function updateUI() {
-  duoStore = []
-  prev = []
-  scores[activePlayer] = 0;
-  dices.forEach(dc => {
-    dc.style.display = 'none'
-  })
-  document.getElementById("score-" + activePlayer).textContent = "0";
-}
 
 document.querySelector(".btn-roll").addEventListener("click", roll);
 function roll() {
@@ -29,10 +19,10 @@ function roll() {
 
     // 1. Random number
     let nummers = [Math.floor(Math.random() * 6) + 1, Math.floor(Math.random() * 6) + 1]
-    duoStore.push(nummers)
+    storeDice.push(nummers)
 
     // Last dice roll
-    dice = duoStore[duoStore.length - 1]
+    dice = storeDice[storeDice.length - 1]
 
     dices = [...document.querySelectorAll('.dices')]
     dices.forEach(dc => {
@@ -45,8 +35,8 @@ function roll() {
     })
 
     //Previuous dice roll
-    if (duoStore.length > 1) {
-      prev = duoStore[duoStore.length - 2]
+    if (storeDice.length > 1) {
+      prev = storeDice[storeDice.length - 2]
     }
 
     if (dice[0] + prev[0] !== 2 || dice[1] + prev[1] !== 2 || dice[1] + prev[0] !== 2 || dice[0] + prev[1] !== 2 &&
@@ -63,13 +53,22 @@ function roll() {
     }
 
     if (dice[0] + prev[0] === 12 || dice[1] + prev[1] === 12 || dice[1] + prev[0] === 12 || dice[0] + prev[1] === 12) {
-      document.querySelector(".one").textContent = "Ooops you rolled 2 x 6 in a row !";
       updateUI()
+      scores[activePlayer] = 0;
+      document.getElementById("score-" + activePlayer).textContent = "0";
+      document.querySelector(".one").textContent = "Ooops you rolled 2 x 6 in a row !";
       nextPlayer();
     }
   }
 }
 
+function updateUI() {
+  storeDice = []
+  prev = []
+  dices.forEach(dc => {
+    dc.style.display = 'none'
+  })
+}
 
 // Hold button to add round score to global score and/or win the game
 document.querySelector(".btn-hold").addEventListener("click", hold);
