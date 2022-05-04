@@ -1,67 +1,70 @@
+// Refactored roll function
+
 let scores, roundScore, activePlayer, gamePlaying, input, count, deg;
-let dices = {
-  d1: [],
-  d2: [],
-}
-count = 185
+let dices, dice, prev;
+count = 0
 let wins = [0, 0];
+let duoStore = []
 
 init();
 
-// Start game by clicking roll dice
+function updateUI() {
+  duoStore = []
+  prev = []
+  scores[activePlayer] = 0;
+  dices.forEach(dc => {
+    dc.style.display = 'none'
+  })
+  document.getElementById("score-" + activePlayer).textContent = "0";
+}
+
 document.querySelector(".btn-roll").addEventListener("click", roll);
 function roll() {
   //When there is no limit set, you can't play the game
   setLimit();
-
-  console.log(count)
   //state variable
   if (gamePlaying === true) {
 
     document.querySelector(".one").textContent = "";
 
     // 1. Random number
-    var dice = Math.floor(Math.random() * 6) + 1;
-    var dice2 = Math.floor(Math.random() * 6) + 1;
-    dices.d1.push(dice);
-    dices.d2.push(dice2);
+    let nummers = [Math.floor(Math.random() * 6) + 1, Math.floor(Math.random() * 6) + 1]
+    duoStore.push(nummers)
 
-    // 2.Display result
-    var diceDOM = document.querySelector(".dice");
-    diceDOM.style.display = "flex";
-    diceDOM.src = "dice-" + dice + ".png";
+    // Last dice roll
+    dice = duoStore[duoStore.length - 1]
 
-    var diceDOM2 = document.querySelector(".dice2");
-    diceDOM2.style.display = "flex";
-    diceDOM2.src = "dice-" + dice2 + ".png";
+    dices = [...document.querySelectorAll('.dices')]
+    dices.forEach(dc => {
+      dc.style.display = "flex";
+      if (dc.classList.contains('dice')) {
+        dc.src = "dice-" + dice[0] + ".png";
+      } else {
+        dc.src = "dice-" + dice[1] + ".png";
+      }
+    })
 
-    // 3.Update roundscore if conditions are met
-    let prev = dices.d1[dices.d1.length - 2];
-    let prev2 = dices.d2[dices.d2.length - 2];
+    //Previuous dice roll
+    if (duoStore.length > 1) {
+      prev = duoStore[duoStore.length - 2]
+    }
 
-    if ((dice + prev !== 2 || dice + prev2 !== 2 || dice2 + prev !== 2 || dice2 + prev2 !== 2) &&
-      (dice + prev !== 12 || dice + prev2 !== 12 || dice2 + prev !== 12 || dice2 + prev2 !== 12)) {
+    if (dice[0] + prev[0] !== 2 || dice[1] + prev[1] !== 2 || dice[1] + prev[0] !== 2 || dice[0] + prev[1] !== 2 &&
+      dice[0] + prev[0] !== 12 || dice[1] + prev[1] !== 12 || dice[1] + prev[0] !== 12 || dice[0] + prev[1] !== 12) {
       // Add score
-      roundScore += dice + dice2; // first update score
+      roundScore += dice[0] + dice[1]; // first update score
       document.querySelector("#current-" + activePlayer).textContent = roundScore;
 
     }
-    if (dice + prev === 2 || dice + prev2 === 2 || dice2 + prev === 2 || dice2 + prev2 === 2) {
-      dices.d1 = [];
-      dices.d2 = [];
-      diceDOM.style.display = "none";
-      diceDOM2.style.display = "none";
+    if (dice[0] + prev[0] === 2 || dice[1] + prev[1] === 2 || dice[1] + prev[0] === 2 || dice[0] + prev[1] === 2) {
       document.querySelector(".one").textContent = "Ooops you rolled 2 x 1 in a row !";
+      updateUI()
       nextPlayer();
     }
-    if (dice + prev === 12 || dice + prev2 === 12 || dice2 + prev === 12 || dice2 + prev2 === 12) {
-      dices.d1 = [];
-      dices.d2 = [];
-      scores[activePlayer] = 0;
-      diceDOM.style.display = "none";
-      diceDOM2.style.display = "none";
-      document.getElementById("score-" + activePlayer).textContent = "0";
+
+    if (dice[0] + prev[0] === 12 || dice[1] + prev[1] === 12 || dice[1] + prev[0] === 12 || dice[0] + prev[1] === 12) {
       document.querySelector(".one").textContent = "Ooops you rolled 2 x 6 in a row !";
+      updateUI()
       nextPlayer();
     }
   }
