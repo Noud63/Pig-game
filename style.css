@@ -163,7 +163,7 @@ button {
     transition: background-color 0.3s, color 0.3s;
 }
 
-button:hover { font-weight: 600; }
+button:hover { font-weight: 700; text-shadow: 0px 0px 1px rgb(187, 178, 178);}
 button:hover i { margin-right: 20px; }
 
 button:focus {
@@ -171,7 +171,7 @@ button:focus {
 }
 
 i {
-    color:red;
+    color:rgb(228, 0, 0);
     display: inline-block;
     margin-right: 15px;
     font-size: 32px;
@@ -185,10 +185,10 @@ i {
     top: 50px;  color: rgb(184, 0, 0);
 }
 .btn-roll { 
-    top: 367px;  color: rgb(184, 0, 0);
+    top: 367px;  color: rgb(221, 0, 0);
 }
 .btn-hold { 
-    top: 422px;  color: rgb(184, 0, 0);
+    top: 422px;  color: rgb(221, 0, 0);
 }
 .btn-rules { 
     top: 600px;
@@ -211,7 +211,7 @@ i {
     width: 100px;
     box-shadow: 0px 1px 4px rgba(43, 28, 15, 0.5);
     position: absolute;
-    top: 490px;
+    top: 488px;
     width: 100px;
     height: 60px;
     left:50%;
@@ -241,14 +241,17 @@ input[type=text]  {
     outline: none;
     border: 1px solid red;
     text-align: center;
-    font-size: 1.4rem;
+    font-family: "DS-DIGII.TTF";
+     text-shadow: 0px 0px 2px rgb(255, 21, 21);
+    font-size: 1.8rem;
     color: red;
 }
 
-::placeholder {
+input[type=text]::placeholder {
     color:red;
-    font-size: 1rem;
-    line-height: 2rem;
+    font-family: "DS-DIGII.TTF";
+    text-shadow: 0px 0px 2px rgb(255, 21, 21);
+    font-size: 1.8rem;
     text-align: center;
 }
 
@@ -369,9 +372,10 @@ input[type=text]  {
     justify-content: center;
     align-items: center;
     color: red;
-    font-size: 1.4rem;
-    font-family: Arial, Helvetica, sans-serif;
-    padding-top: 8px;
+    font-size: 1.8rem;
+    font-family: "DS-DIGII.TTF";
+    text-shadow: 0px 0px 2px rgb(255, 21, 21);
+    padding-top: 6px;
     width: 65%;
     height: 40px;
     padding-bottom: 6px;

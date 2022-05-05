@@ -8,7 +8,6 @@ let storeDice = []
 init();
 
 document.querySelector(".btn-roll").addEventListener("click", roll);
-
 function roll() {
 
   //When there is no limit set, you can't play the game
@@ -47,10 +46,10 @@ function roll() {
 
     roundScore += dice[0] + dice[1]; // first update roundscore
     document.querySelector("#current-" + activePlayer).textContent = roundScore;
-    
+
     if ((prev.includes(1) && dice.includes(1))) {
       updateUI()
-      document.querySelector(".one").textContent = "Ooops you rolled 2 x 1 in a row !";
+      document.querySelector(".one").textContent = "Ooops, you rolled 2 x 1 in a row !";
       nextPlayer();
     }
 
@@ -58,7 +57,7 @@ function roll() {
       updateUI()
       scores[activePlayer] = 0;
       document.getElementById("score-" + activePlayer).textContent = "0";
-      document.querySelector(".one").textContent = "Ooops you rolled 2 x 6 in a row !";
+      document.querySelector(".one").textContent = "Ooops, you rolled 2 x 6 in a row !";
       nextPlayer();
     }
   }
