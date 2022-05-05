@@ -447,7 +447,7 @@ input[type=text]  {
     visibility: hidden;
     position: absolute;
     left: 50%;
-    top: 100px;
+    top: 90px;
     transform: translateX(-50%);
     height: 100px;
 }

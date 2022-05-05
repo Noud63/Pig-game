@@ -28,7 +28,7 @@ function roll() {
       dice = storeDice[storeDice.length - 1]
     }
 
-    //Previous dice roll
+    //Second-last dice roll
     if (storeDice.length > 1) {
       prev = storeDice[storeDice.length - 2]
     } else {
@@ -45,20 +45,16 @@ function roll() {
       }
     })
 
-    // if (dice[0] + prev[0] !== 2 || dice[1] + prev[1] !== 2 || dice[1] + prev[0] !== 2 || dice[0] + prev[1] !== 2 &&
-    //   dice[0] + prev[0] !== 12 || dice[1] + prev[1] !== 12 || dice[1] + prev[0] !== 12 || dice[0] + prev[1] !== 12) {
-    //   // Add score
-    roundScore += dice[0] + dice[1]; // first update score
+    roundScore += dice[0] + dice[1]; // first update roundscore
     document.querySelector("#current-" + activePlayer).textContent = roundScore;
-
-    // }
-    if (dice[0] + prev[0] === 2 || dice[1] + prev[1] === 2 || dice[1] + prev[0] === 2 || dice[0] + prev[1] === 2) {
+    
+    if ((prev.includes(1) && dice.includes(1))) {
       updateUI()
       document.querySelector(".one").textContent = "Ooops you rolled 2 x 1 in a row !";
       nextPlayer();
     }
 
-    if (dice[0] + prev[0] === 12 || dice[1] + prev[1] === 12 || dice[1] + prev[0] === 12 || dice[0] + prev[1] === 12) {
+    if (prev.includes(6) && dice.includes(6)) {
       updateUI()
       scores[activePlayer] = 0;
       document.getElementById("score-" + activePlayer).textContent = "0";
@@ -92,7 +88,7 @@ function hold() {
     document.getElementById("score-" + activePlayer).textContent =
       scores[activePlayer];
 
-    // Check if player won the game, and set limit.
+    // Check if player won the game.
     let input = document.querySelector(".limit").value;
 
     if (scores[activePlayer] >= input) {
@@ -146,7 +142,7 @@ function setLimit() {
 }
 
 
-//Add audio and visual effects to player name when win
+//Add audio and visual effects to player name when winning the game
 function addEffects() {
   document.getElementById("sound").muted = false;
   document.getElementById("sound").play();
