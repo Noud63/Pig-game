@@ -16,7 +16,7 @@ function roll() {
   //state variable
   if (gamePlaying === true) {
 
-    document.querySelector(".one").textContent = "";
+    document.querySelector(".oneAndSix").textContent = "";
 
     // 1. Random number
     let numbers = [Math.floor(Math.random() * 6) + 1, Math.floor(Math.random() * 6) + 1]
@@ -37,6 +37,7 @@ function roll() {
     //Dice sound sample
     diceRoll()
 
+    //Render dice to UI
     dices = [...document.querySelectorAll('.dices')]
     dices.forEach(dc => {
       dc.style.display = "flex";
@@ -48,13 +49,13 @@ function roll() {
     })
 
     // first update roundscore
-    roundScore += dice[0] + dice[1]; 
+    roundScore += dice[0] + dice[1];
     document.querySelector("#current-" + activePlayer).textContent = roundScore;
 
-
+    //Check for 2 x 1 or 2 x 6 in a row
     if ((prev.includes(1) && dice.includes(1))) {
       updateUI()
-      document.querySelector(".one").textContent = "Ooops, you rolled 2 x 1 in a row !";
+      document.querySelector(".oneAndSix").textContent = "Ooops, you rolled 2 x 1 in a row !";
       nextPlayer();
     }
 
@@ -62,7 +63,7 @@ function roll() {
       updateUI()
       scores[activePlayer] = 0;
       document.getElementById("score-" + activePlayer).textContent = "0";
-      document.querySelector(".one").textContent = "Ooops, you rolled 2 x 6 in a row !";
+      document.querySelector(".oneAndSix").textContent = "Ooops, you rolled 2 x 6 in a row !";
       nextPlayer();
     }
   }
@@ -281,7 +282,7 @@ function init() {
   document.querySelector(".dice").style.display = "none";
   document.querySelector(".dice2").style.display = "none";
 
-  document.querySelector(".one").textContent = "";
+  document.querySelector(".oneAndSix").textContent = "";
 
   document.getElementById("score-0").textContent = "0";
   document.getElementById("score-1").textContent = "0";
