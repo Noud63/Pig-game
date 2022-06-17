@@ -10,11 +10,11 @@ init();
 document.querySelector(".btn-roll").addEventListener("click", roll);
 function roll() {
 
-  //When there is no limit set, you can't play the game
-  setLimit();
-
   //state variable
   if (gamePlaying === true) {
+
+    //When there is no limit set, you can't play the game   
+    setLimit();
 
     document.querySelector(".oneAndSix").textContent = "";
 
@@ -66,6 +66,8 @@ function roll() {
       document.querySelector(".oneAndSix").textContent = "Ooops, you rolled 2 x 6 in a row !";
       nextPlayer();
     }
+  } else {
+    return
   }
 }
 
@@ -82,9 +84,12 @@ function updateUI() {
 // Hold button to add round score to global score and/or win the game
 document.querySelector(".btn-hold").addEventListener("click", hold);
 function hold() {
-  setLimit();
+
 
   if (gamePlaying) {
+
+    setLimit();
+
     document.querySelector(".dice").style.display = "none";
     document.querySelector(".dice2").style.display = "none";
 
